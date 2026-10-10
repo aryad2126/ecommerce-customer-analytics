@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
@@ -194,66 +194,102 @@ st.markdown("""
     }
 
 
-    /* Distinct, theme-aware KPI accents */
-    div[data-testid="stHorizontalBlock"] div[data-testid="stMetric"] {
+    /* KPI hierarchy and accent colors */
+    div[data-testid="stVerticalBlock"]:has(.kpi-primary) .kpi-teal [data-testid="stMetric"] {
+        border-top-color: #14B8A6;
+        box-shadow: 0 4px 14px rgba(20, 184, 166, 0.12);
+    }
+    div[data-testid="stVerticalBlock"]:has(.kpi-primary) .kpi-green [data-testid="stMetric"] {
+        border-top-color: #36B37E;
+        box-shadow: 0 4px 14px rgba(54, 179, 126, 0.12);
+    }
+    div[data-testid="stVerticalBlock"]:has(.kpi-primary) .kpi-blue [data-testid="stMetric"] {
+        border-top-color: #5B8DEF;
+        box-shadow: 0 4px 14px rgba(91, 141, 239, 0.12);
+    }
+    div[data-testid="stVerticalBlock"]:has(.kpi-primary) .kpi-amber [data-testid="stMetric"] {
+        border-top-color: #F5B544;
+        box-shadow: 0 4px 14px rgba(245, 181, 68, 0.12);
+    }
+    .kpi-secondary [data-testid="stMetric"] {
+        border-top-color: #94A3B8;
+        box-shadow: none;
+    }
+    /* KPI card styling: consistent base, clear visual hierarchy */
+    div[data-testid="stMetric"] {
         background: var(--secondary-background-color);
         border: 1px solid var(--border-color);
-        border-top: 4px solid #14B8A6;
+        border-top: 4px solid #94A3B8;
         border-radius: 14px;
-        padding: 16px;
+        padding: 15px 16px;
         min-height: 112px;
-        box-shadow: 0 4px 14px rgba(20, 184, 166, 0.07);
+        box-shadow: 0 3px 10px rgba(100, 116, 139, 0.06);
         transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
-    div[data-testid="stHorizontalBlock"] div[data-testid="stMetric"]:hover {
+    div[data-testid="stMetric"]:hover {
         transform: translateY(-2px);
     }
 
-    div[data-testid="stHorizontalBlock"]:nth-of-type(1)
-    div[data-testid="stMetric"]:nth-child(2) {
-        border-top-color: #5B8DEF;
-    }
-
-    div[data-testid="stHorizontalBlock"]:nth-of-type(1)
-    div[data-testid="stMetric"]:nth-child(3) {
-        border-top-color: #9270E8;
-    }
-
-    div[data-testid="stHorizontalBlock"]:nth-of-type(1)
-    div[data-testid="stMetric"]:nth-child(4) {
-        border-top-color: #F5B544;
-    }
-
-    div[data-testid="stHorizontalBlock"]:nth-of-type(2)
-    div[data-testid="stMetric"]:nth-child(1) {
-        border-top-color: #36B37E;
-    }
-
-    div[data-testid="stHorizontalBlock"]:nth-of-type(2)
-    div[data-testid="stMetric"]:nth-child(2) {
-        border-top-color: #F17C67;
-    }
-
-    div[data-testid="stHorizontalBlock"]:nth-of-type(2)
-    div[data-testid="stMetric"]:nth-child(3) {
-        border-top-color: #5B8DEF;
-    }
-
-    div[data-testid="stHorizontalBlock"]:nth-of-type(2)
-    div[data-testid="stMetric"]:nth-child(4) {
-        border-top-color: #14B8A6;
-    }
-
     div[data-testid="stMetricLabel"] p {
-        font-weight: 550;
+        font-weight: 600;
     }
 
     div[data-testid="stMetricValue"] {
         font-weight: 750;
         letter-spacing: -0.025em;
     }
-
+    /* KPI cards: explicit colors on self-contained HTML cards */
+    .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin: 8px 0 16px 0;
+    }
+    .kpi-card {
+        background: var(--secondary-background-color);
+        border: 1px solid var(--border-color);
+        border-top: 4px solid #94A3B8;
+        border-radius: 14px;
+        padding: 17px 16px;
+        min-height: 122px;
+        box-sizing: border-box;
+        transition: transform 0.2s ease;
+    }
+    .kpi-card:hover {
+        transform: translateY(-2px);
+    }
+    .kpi-teal { border-top-color: #14B8A6; }
+    .kpi-green { border-top-color: #36B37E; }
+    .kpi-blue { border-top-color: #5B8DEF; }
+    .kpi-amber { border-top-color: #F5B544; }
+    .kpi-secondary { border-top-color: #94A3B8; }
+    .kpi-label {
+        color: var(--text-color);
+        opacity: 0.82;
+        font-size: 0.88rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .kpi-value {
+        color: var(--text-color);
+        font-size: clamp(1.15rem, 1.7vw, 1.75rem);
+        font-weight: 750;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+    .kpi-caption {
+        color: var(--text-color);
+        opacity: 0.65;
+        font-size: 0.76rem;
+        margin-top: 8px;
+    }
+    @media (max-width: 900px) {
+        .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 480px) {
+        .kpi-grid { grid-template-columns: 1fr; }
+    }
     #MainMenu, footer {
         visibility: hidden;
     }
@@ -522,25 +558,56 @@ avg_order_spend = item_spend / delivered_orders if delivered_orders else 0
 
 st.markdown("### Performance at a glance")
 
-k1, k2, k3, k4 = st.columns(4)
-k1.metric("Orders in view", f"{total_orders:,}")
-k2.metric("Delivered orders", f"{delivered_orders:,}")
-k3.metric("Customers in view", f"{filtered_customers:,}")
-k4.metric("Delivered item spend", money(item_spend))
-
-k5, k6, k7, k8 = st.columns(4)
-k5.metric("Delivered payment total", money(payment_total))
-k6.metric("Avg. item spend / order", money(avg_order_spend))
-k7.metric(
-    "Delivery share",
-    f"{(delivered_orders / total_orders * 100):.1f}%"
-    if total_orders else "0.0%",
+delivery_share = (
+    f"{delivered_orders / total_orders * 100:.1f}%"
+    if total_orders else "0.0%"
 )
-k8.metric(
-    "Orders with item totals",
-    f"{filtered['item_total'].notna().sum():,}",
-)
+orders_with_totals = f"{filtered['item_total'].notna().sum():,}"
 
+st.markdown(f"""
+<div class="kpi-grid">
+    <div class="kpi-card kpi-teal">
+        <div class="kpi-label">Orders in view</div>
+        <div class="kpi-value">{total_orders:,}</div>
+        <div class="kpi-caption">Orders matching current filters</div>
+    </div>
+    <div class="kpi-card kpi-green">
+        <div class="kpi-label">Delivered orders</div>
+        <div class="kpi-value">{delivered_orders:,}</div>
+        <div class="kpi-caption">Successfully delivered</div>
+    </div>
+    <div class="kpi-card kpi-blue">
+        <div class="kpi-label">Customers in view</div>
+        <div class="kpi-value">{filtered_customers:,}</div>
+        <div class="kpi-caption">Distinct customers</div>
+    </div>
+    <div class="kpi-card kpi-amber">
+        <div class="kpi-label">Delivered payment total</div>
+        <div class="kpi-value">{money(payment_total)}</div>
+        <div class="kpi-caption">Payments for delivered orders</div>
+    </div>
+    <div class="kpi-card kpi-secondary">
+        <div class="kpi-label">Delivered item spend</div>
+        <div class="kpi-value">{money(item_spend)}</div>
+        <div class="kpi-caption">Excludes freight</div>
+    </div>
+    <div class="kpi-card kpi-secondary">
+        <div class="kpi-label">Avg. item spend / order</div>
+        <div class="kpi-value">{money(avg_order_spend)}</div>
+        <div class="kpi-caption">Per delivered order</div>
+    </div>
+    <div class="kpi-card kpi-secondary">
+        <div class="kpi-label">Delivery share</div>
+        <div class="kpi-value">{delivery_share}</div>
+        <div class="kpi-caption">Delivered / all orders in view</div>
+    </div>
+    <div class="kpi-card kpi-secondary">
+        <div class="kpi-label">Orders with item totals</div>
+        <div class="kpi-value">{orders_with_totals}</div>
+        <div class="kpi-caption">Orders with recorded item totals</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 st.markdown(
     '<div class="section-note">Item spend excludes freight. '
     'Payment totals are shown separately and may include freight or '
