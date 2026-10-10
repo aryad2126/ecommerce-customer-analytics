@@ -1,0 +1,7 @@
+﻿pandas
+pyspark
+pymongo
+cassandra-driver
+scikit-learn
+streamlit
+plotly
