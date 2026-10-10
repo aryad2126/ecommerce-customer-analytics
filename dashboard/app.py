@@ -652,7 +652,7 @@ with left:
     st.plotly_chart(fig, use_container_width=True)
 
 with right:
-    trend_data = filtered.dropna(
+    trend_data = date_data.dropna(
         subset=["order_purchase_timestamp"]
     ).copy()
 
@@ -663,8 +663,15 @@ with right:
     )
 
     if metric_choice == "Order count":
+        count_data = trend_data.copy()
+
+        if selected_status != "All statuses":
+            count_data = count_data[
+                count_data["order_status"].eq(selected_status)
+            ]
+
         monthly = (
-            trend_data.groupby("month")
+            count_data.groupby("month")
             .agg(value=("order_id", "nunique"))
             .reset_index()
         )
