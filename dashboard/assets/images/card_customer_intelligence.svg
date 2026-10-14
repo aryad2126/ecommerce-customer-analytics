@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 180" width="100%" height="100%">
+  <defs>
+    <linearGradient id="c2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#501531" />
+      <stop offset="100%" stop-color="#621E3E" />
+    </linearGradient>
+  </defs>
+  <rect width="380" height="180" rx="16" fill="url(#c2Grad)" />
+  <circle cx="80" cy="90" r="65" fill="#C6C954" opacity="0.08" />
+
+  <!-- Customer Persona Graphic (Left) -->
+  <g transform="translate(45, 35)">
+    <circle cx="55" cy="55" r="48" fill="none" stroke="#FFEC8E" stroke-width="1.5" stroke-dasharray="4 4" />
+    <circle cx="55" cy="55" r="38" fill="#FFFDF0" fill-opacity="0.15" stroke="#C6C954" stroke-width="2" />
+    <circle cx="55" cy="44" r="14" fill="#FFEC8E" />
+    <path d="M 35 75 C 35 60, 75 60, 75 75 Z" fill="#FFEC8E" />
+    <circle cx="88" cy="30" r="12" fill="#D9282D" stroke="#FFFDF0" stroke-width="1" />
+    <text x="88" y="34" text-anchor="middle" fill="#FFFFFF" font-size="10">♥</text>
+  </g>
+
+  <!-- Segmentation Box (Right) -->
+  <g transform="translate(180, 38)">
+    <rect x="0" y="0" width="160" height="95" rx="12" fill="#FFFDF0" fill-opacity="0.12" stroke="#FFEC8E" stroke-width="1.2" />
+    <text x="16" y="26" fill="#FFEC8E" font-family="system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="1">RFM SEGMENTS</text>
+    <text x="16" y="52" fill="#FFFDF0" font-family="system-ui, sans-serif" font-size="17" font-weight="800">High-Value</text>
+    <text x="16" y="68" fill="#FFEC8E" font-family="system-ui, sans-serif" font-size="11" font-weight="500">Repeat Cohorts: 1.88x AOV</text>
+    <rect x="16" y="74" width="60" height="14" rx="7" fill="#667436" />
+    <text x="46" y="84" text-anchor="middle" fill="#FFFDF0" font-size="8" font-weight="700">VIP CLUSTER</text>
+    <rect x="82" y="74" width="55" height="14" rx="7" fill="#C6C954" fill-opacity="0.3" stroke="#FFEC8E" stroke-width="0.8" />
+    <text x="109" y="84" text-anchor="middle" fill="#FFEC8E" font-size="8" font-weight="700">RETENTION</text>
+  </g>
+</svg>

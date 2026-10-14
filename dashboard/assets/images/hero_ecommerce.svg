@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8A2B59" />
+      <stop offset="100%" stop-color="#501531" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFEC8E" />
+      <stop offset="100%" stop-color="#C6C954" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Glow Circles -->
+  <circle cx="380" cy="140" r="130" fill="#FFEC8E" opacity="0.08" filter="url(#glow)" />
+  <circle cx="140" cy="260" r="100" fill="#C6C954" opacity="0.06" />
+
+  <!-- Floating Analytics Card (Top Left) -->
+  <g transform="translate(30, 40)">
+    <rect x="0" y="0" width="190" height="95" rx="14" fill="#FFFFFF" fill-opacity="0.14" stroke="#FFEC8E" stroke-width="1.5" stroke-dasharray="3 3" />
+    <text x="16" y="26" fill="#FFEC8E" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">REVENUE VELOCITY</text>
+    <text x="16" y="52" fill="#FFFDF0" font-family="system-ui, sans-serif" font-size="20" font-weight="800">+28.4%</text>
+    <path d="M 16 78 Q 55 58 90 72 T 165 48" fill="none" stroke="url(#goldGrad)" stroke-width="3.5" stroke-linecap="round" />
+    <circle cx="165" cy="48" r="4.5" fill="#FFEC8E" />
+  </g>
+
+  <!-- Main Shopping Bag (Center) -->
+  <g transform="translate(180, 100)">
+    <!-- Shadow -->
+    <ellipse cx="100" cy="230" rx="95" ry="16" fill="#220513" opacity="0.45" />
+    <!-- Handles -->
+    <path d="M 65 50 C 65 -5, 135 -5, 135 50" fill="none" stroke="#FFEC8E" stroke-width="6" stroke-linecap="round" />
+    <!-- Body -->
+    <rect x="25" y="45" width="150" height="175" rx="16" fill="url(#bagGrad)" stroke="#FFEC8E" stroke-width="2" />
+    <!-- Accent Fold -->
+    <path d="M 25 45 L 45 65 L 155 65 L 175 45 Z" fill="#FFFFFF" opacity="0.12" />
+    <!-- Brand Crest -->
+    <circle cx="100" cy="125" r="26" fill="#FFEC8E" fill-opacity="0.18" stroke="#FFEC8E" stroke-width="1.5" />
+    <text x="100" y="133" text-anchor="middle" fill="#FFEC8E" font-family="system-ui, sans-serif" font-size="22">🛍️</text>
+    <line x1="25" y1="170" x2="175" y2="170" stroke="#FFEC8E" stroke-width="2" stroke-dasharray="4 4" />
+  </g>
+
+  <!-- Parcel / Package Box (Front Right) -->
+  <g transform="translate(320, 185)">
+    <ellipse cx="75" cy="145" rx="70" ry="12" fill="#220513" opacity="0.4" />
+    <polygon points="75,10 145,45 75,80 5,45" fill="#FFF3B0" stroke="#621E3E" stroke-width="1" />
+    <polygon points="5,45 75,80 75,140 5,105" fill="#DECE88" stroke="#621E3E" stroke-width="1" />
+    <polygon points="145,45 75,80 75,140 145,105" fill="#C6C954" opacity="0.9" stroke="#621E3E" stroke-width="1" />
+    <line x1="40" y1="27" x2="110" y2="62" stroke="#621E3E" stroke-width="5" stroke-opacity="0.6" />
+    <circle cx="120" cy="95" r="16" fill="#621E3E" stroke="#FFEC8E" stroke-width="1.5" />
+    <text x="120" y="100" text-anchor="middle" fill="#FFEC8E" font-family="system-ui, sans-serif" font-size="12" font-weight="800">✓</text>
+  </g>
+
+  <!-- Floating Customer Badge (Bottom Left) -->
+  <g transform="translate(45, 235)">
+    <rect x="0" y="0" width="160" height="60" rx="12" fill="#FFFDF0" fill-opacity="0.15" stroke="#C6C954" stroke-width="1.5" />
+    <circle cx="28" cy="30" r="16" fill="#C6C954" fill-opacity="0.3" />
+    <text x="28" y="35" text-anchor="middle" fill="#FFEC8E" font-size="14">👥</text>
+    <text x="54" y="26" fill="#FFFDF0" font-family="system-ui, sans-serif" font-size="13" font-weight="800">96,000+</text>
+    <text x="54" y="44" fill="#FFEC8E" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Verified Buyers</text>
+  </g>
+
+  <!-- Gold Star Accents -->
+  <g fill="#FFEC8E">
+    <polygon points="170,30 174,38 182,42 174,46 170,54 166,46 158,42 166,38" opacity="0.85" />
+    <polygon points="470,100 473,106 479,109 473,112 470,118 467,112 461,109 467,106" opacity="0.75" />
+  </g>
+</svg>
