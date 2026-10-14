@@ -359,6 +359,36 @@ def read_spark_csv(folder_string):
     )
 
 
+USER_ORDER_COLUMNS = [
+    "order_id", "customer_id", "order_status", "order_purchase_timestamp",
+    "item_total", "freight_total", "payment_total",
+]
+
+
+def user_orders_path():
+    return DATA_DIR / "user_orders.csv"
+
+
+def load_user_orders():
+    """Orders entered through the Records page form."""
+    path = user_orders_path()
+    if not path.exists():
+        return pd.DataFrame(columns=USER_ORDER_COLUMNS)
+    df = pd.read_csv(path)
+    df["order_purchase_timestamp"] = pd.to_datetime(
+        df["order_purchase_timestamp"], errors="coerce"
+    )
+    return df
+
+
+def save_user_order(row):
+    path = user_orders_path()
+    pd.DataFrame([row], columns=USER_ORDER_COLUMNS).to_csv(
+        path, mode="a", header=not path.exists(), index=False
+    )
+    st.cache_data.clear()
+
+
 @st.cache_data(show_spinner="Preparing dashboard...")
 def load_data():
     orders = read_spark_csv(
@@ -395,6 +425,8 @@ def load_data():
     ]:
         if col in data.columns:
             data[col] = pd.to_numeric(data[col], errors="coerce")
+
+    data = pd.concat([data, load_user_orders()], ignore_index=True)
 
     customers["delivered_item_spend"] = pd.to_numeric(
         customers["delivered_item_spend"], errors="coerce"
